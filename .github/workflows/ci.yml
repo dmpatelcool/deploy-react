@@ -20,9 +20,7 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm install
-        working-directory: my-react-app
+        run: cd my-react-app && npm install
 
       - name: Run tests
-        run: CI=true npm test
-        working-directory: my-react-app
+        run: cd my-react-app && CI=true npm test

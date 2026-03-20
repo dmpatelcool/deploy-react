@@ -1,10 +1,10 @@
-name: CI - Run Tests
+name: CI - Run React tests
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   test:
@@ -14,13 +14,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
 
       - name: Install dependencies
-        run: cd my-react-app && npm install
+        run: npm install
 
       - name: Run tests
-        run: cd my-react-app && CI=true npm test
+        run: npm test -- --watch=false

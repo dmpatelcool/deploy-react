@@ -1,0 +1,15 @@
+name: CD - Deploy to Firebase Hosting
+on:
+  push:
+    branches: [ main ]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - run: cd my-react-app && npm install
+      - run: cd my-react-app && npm run build
+      - run: cd my-react-app && npx firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }}
